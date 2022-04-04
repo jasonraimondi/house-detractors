@@ -1,62 +1,14 @@
 <script lang="ts">
   import "normalize.css/normalize.css";
+  import "../style/style.css";
+
   import Percent from "../lib/Percent.svelte";
-
-  type DetractorNames =
-    "no_current_pool" |
-    "no_room_for_grass" |
-    "needs_floor_replaced" |
-    "needs_kitchen_replaced" |
-    "needs_master_bathroom_replaced" |
-    "no_gas_stove" |
-    "closed_floor_plan" |
-    "small_kitchen" |
-    "small_master_bath" |
-    "no_garage" |
-    "small_garage" |
-    "low_storage" |
-    "needs_drywalls_replaced" |
-    "has_textured_walls" |
-    "small_yard" |
-    "old_house" |
-    "old_roof";
-
-  type House = {
-    name: string;
-    detractors: Record<DetractorNames, number>,
-    calculated?: {
-      percent: number;
-    }
-  };
-
-  type Detractor = {
-    description: string;
-    low: number;
-    high: number;
-  }
-
-  const detractorsMap: Record<DetractorNames, Detractor> = {
-    no_current_pool: { description: "No pool currently (but possible)", low: 13, high: 21 },
-    no_room_for_grass: { description: "No room for grass in yard w/pool", low: 21, high: 34 },
-    needs_floor_replaced: { description: "Needs flooring replaced", low: 3, high: 5 },
-    needs_kitchen_replaced: { description: "Needs new kitchen", low: 5, high: 8 },
-    needs_master_bathroom_replaced: { description: "Needs new master bath", low: 5, high: 8 },
-    no_gas_stove: { description: "No gas stove", low: 1, high: 3 },
-    closed_floor_plan: { description: "Closed floor plan", low: 3, high: 5 },
-    small_kitchen: { description: "Small kitchen", low: 8, high: 13 },
-    small_master_bath: { description: "small master bath", low: 8, high: 13 },
-    no_garage: { description: "No garage", low: 8, high: 13 },
-    small_garage: { description: "Small garage", low: 3, high: 5 },
-    low_storage: { description: "Not a lot of storage", low: 5, high: 8 },
-    needs_drywalls_replaced: { description: "Drywall replacement", low: 5, high: 5 },
-    has_textured_walls: { description: "Textured walls", low: 3, high: 5 },
-    small_yard: { description: "Small yard", low: 13, high: 21 },
-    old_house: { description: "Older house", low: 8, high: 13 },
-    old_roof: { description: "Old roof", low: 13, high: 21 },
-  };
+  import type { DetractorNames, House } from "../lib/map";
+  import { detractorsMap } from "../lib/map";
 
   const sum = (a: number, b: number) => a + b;
   const toPercent = (a: number): number => 100 - (a * 100);
+
   const controlHigh = Object.values(detractorsMap).map(m => 10 * m.high).reduce(sum);
   const controlLow = Object.values(detractorsMap).map(m => 10 * m.low).reduce(sum);
 
@@ -187,16 +139,6 @@
 </div>
 
 <style>
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
-  html {
-    font-size: 18px;
-  }
-
   .home {
     border: 1px solid tomato;
     width: 500px;
@@ -221,25 +163,4 @@
     line-height: 1;
     margin: 0;
   }
-
-  html {
-    background: #ccc;
-    font-family: ystem-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;;
-    font-size: 13px;
-    line-height: 1.3;
-  }
-
-  body style {
-    display: block;
-    background: #333;
-    color: white;
-    white-space: pre;
-    padding: 10px;
-    font-family: monospace;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-  }
-
 </style>
