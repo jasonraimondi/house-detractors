@@ -139,6 +139,9 @@
   }
 
   .home label span {
+    flex: 2;
+  }
+  .home input {
     flex: 1;
   }
 
