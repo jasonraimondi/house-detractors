@@ -39,7 +39,29 @@
     },
   };
 
-  let houses: House[] = [
+  let houses: House[] = {
+    {
+      "name": "Golf House",
+      "detractors": {
+        "no_current_pool": 0,
+        "no_room_for_grass": 0,
+        "needs_floor_replaced": 6,
+        "needs_kitchen_replaced": 2,
+        "needs_master_bathroom_replaced": 2,
+        "no_gas_stove": 10,
+        "closed_floor_plan": 3,
+        "small_kitchen": 2,
+        "small_master_bath": 0,
+        "no_garage": 0,
+        "small_garage": 0,
+        "low_storage": 0,
+        "needs_drywalls_replaced": 0,
+        "has_textured_walls": 10,
+        "small_yard": 0,
+        "old_house": 5,
+        "old_roof": 2
+      }
+    },
     {
       name: "The Big Pool",
       detractors: {
