@@ -39,7 +39,7 @@
     },
   };
 
-  let houses: House[] = {
+  let houses: House[] = [
     {
       "name": "Golf House",
       "detractors": {
